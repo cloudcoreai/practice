@@ -8,6 +8,7 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
+      - checkout
       - run: echo $CIRCLE_PIPELINE_ID
       - run: echo $WHICH_GIT_BRANCH
 
