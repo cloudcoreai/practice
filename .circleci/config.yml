@@ -26,7 +26,7 @@ jobs:
 
     job_number2:
       steps:
-        restore_cache:
+        - restore_cache:
           - v1-my-project-{{ checksum "project.clj" }}
         - attach_workspace:
             at: ~/
