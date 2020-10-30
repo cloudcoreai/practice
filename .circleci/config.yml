@@ -1,12 +1,17 @@
 version: 2.1
 
+defaults: &nameoftheanchor
+  docker:
+    - image: circleci/node:13.8.0
+
 jobs:
   job_number1:
     environment: # These are only available inside this job only.
       CIRCLE_PIPELINE_ID: << pipeline.id >>
       WHICH_GIT_BRANCH: << pipeline.git.branch >>
-    docker:
-      - image: circleci/node:13.8.0
+    <<: *nameoftheanchor
+#    docker:
+#      - image: circleci/node:13.8.0
     steps:
 #      - save_cache:
 #          key: v1-my-project-{{ checksum "project.clj" }}
@@ -23,8 +28,9 @@ jobs:
             - output.txt
 
   job_number2:
-    docker:
-      - image: circleci/node:13.8.0
+    <<: *nameoftheanchor
+#    docker:
+#      - image: circleci/node:13.8.0
     steps:
 #      - restore_cache:
 #        keys:
