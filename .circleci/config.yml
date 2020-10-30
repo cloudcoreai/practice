@@ -18,9 +18,9 @@ jobs:
             echo Hi Jesse
       - run: echo "Hi Jesse from text file!" > ~/output.txt
       - persist_to_workspace:
-            root: ~/
-            paths:
-              - output.txt
+          root: ~/
+          paths:
+            - output.txt
 
   job_number2:
     docker:
