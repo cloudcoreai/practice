@@ -39,4 +39,4 @@ workflows:
       - job_number1
       - job_number2:
           requires:
-            job_number1
+            - job_number1
