@@ -16,9 +16,7 @@ jobs:
       - run:
           command: |
             echo Hi Jesse
-      - run:
-          command: |
-            echo "Hi Jesse from text file!" > ~/output.txt
+      - run: echo "Hi Jesse from text file!" > ~/output.txt
       - persist_to_workspace:
             root: /~
             paths:
