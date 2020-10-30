@@ -2,23 +2,23 @@ version: 2.1
 
 jobs:
   job_number1:
-    environment: # These are only available inside this job only.
-      CIRCLE_PIPELINE_ID: << pipeline.id >>
-      WHICH_GIT_BRANCH: << pipeline.git.branch >>
+#    environment: # These are only available inside this job only.
+#      CIRCLE_PIPELINE_ID: << pipeline.id >>
+#      WHICH_GIT_BRANCH: << pipeline.git.branch >>
     docker:
       - image: circleci/node:13.8.0
     steps:
 #      - save_cache:
 #          key: v1-my-project-{{ checksum "project.clj" }}
-      - checkout
-      - run: echo $CIRCLE_PIPELINE_ID
-      - run: echo $WHICH_GIT_BRANCH
-      - run:
-          command: |
-            echo Hi Jesse
+#      - checkout
+#      - run: echo $CIRCLE_PIPELINE_ID
+#      - run: echo $WHICH_GIT_BRANCH
+#      - run:
+#          command: |
+#            echo Hi Jesse
       - run: echo "Hi Jesse from text file!" > ~/output.txt
       - persist_to_workspace:
-            root: /~
+            root: ~/
             paths:
               - output.txt
 
