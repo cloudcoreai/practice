@@ -8,8 +8,8 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - save_cache:
-          key: v1-my-project-{{ checksum "project.clj" }}
+#      - save_cache:
+#          key: v1-my-project-{{ checksum "project.clj" }}
       - checkout
       - run: echo $CIRCLE_PIPELINE_ID
       - run: echo $WHICH_GIT_BRANCH
@@ -24,9 +24,9 @@ jobs:
 
     job_number2:
       steps:
-        - restore_cache:
-            keys:
-              - v1-my-project-{{ checksum "project.clj" }}
+#        - restore_cache:
+#            keys:
+#              - v1-my-project-{{ checksum "project.clj" }}
         - attach_workspace:
             at: ~/
         - run: cat ~/output.txt
