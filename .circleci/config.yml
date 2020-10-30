@@ -8,11 +8,34 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
+      - save_cache:
+          key: v1-my-project-{{ checksum "project.clj" }}
       - checkout
       - run: echo $CIRCLE_PIPELINE_ID
       - run: echo $WHICH_GIT_BRANCH
+      - run:
+          command: |
+            echo Hi Jesse
+      - run:
+          command: |
+            echo "Hi Jesse from text file!" > ~/output.txt
+      - persist_to_workspace:
+            root: /~
+            paths:
+              - output.txt
+
+    job_number2:
+      steps:
+        restore_cache:
+          - v1-my-project-{{ checksum "project.clj" }}
+        - attach_workspace:
+            at: ~/
+        - run: cat ~/output.txt
 
 workflows:
   workflow_number1:
     jobs:
       - job_number1
+      - job_number2:
+          requires:
+            job_number1
