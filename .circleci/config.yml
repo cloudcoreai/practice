@@ -23,6 +23,8 @@ jobs:
               - output.txt
 
     job_number2:
+      docker:
+      - image: circleci/node:13.8.0
       steps:
 #        - restore_cache:
 #            keys:
